@@ -1,0 +1,47 @@
+import java.io.IOException;
+
+public class StudentRunner {
+    public static void main(String[] args) throws IOException {
+        Groupe groupe=new Groupe();
+
+       Student s1 =new Student("Anna","Karenina",18,Gender.FEMALE,127);
+       Student s2=new Student("Bob","Big",22,Gender.MALE,18);
+       Student s3=new Student("Mike", "Anoni",2,Gender.MALE,266);
+        Student s4=new Student("Alisa", "Lisa",5,Gender.FEMALE,5);
+        Student s5=new Student("Kolobok", "Kolobok",19,Gender.FEMALE,56);
+
+        try {
+         groupe.addStudent(s1);
+         groupe.addStudent(s2);
+         groupe.addStudent(s3);
+         groupe.addStudent(s4);
+         groupe.addStudent(s5);
+     } catch (MyException e){
+         System.err.println(e.getMessage());
+     }
+
+    groupe.readFromFile("C:\\Users\\andy\\IdeaProjects\\Hellow World\\untitled\\src\\HomeOOp\\Students");
+
+     System.out.println(groupe.toString());
+
+
+     groupe.sortBySurname();
+
+        System.out.println(groupe.toString());
+  //   groupe.sortByStudentID();
+        System.out.println(groupe.toString());
+
+        groupe.writeGroupeToFile("C:\\Users\\andy\\IdeaProjects\\Hellow World\\untitled\\src\\HomeOOp\\newStudents");
+
+        try {
+            groupe.findBySurname("biggg").toString();
+        }catch (MyException e){
+            System.out.println(e.getMessage());
+        }
+
+        for(Student e: groupe.getConscript()){
+            System.out.println(e);
+        }
+    }
+
+}
